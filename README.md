@@ -47,7 +47,7 @@ Internship - InfoWorld/
 ├── requests.http             # Testare rapidă a tuturor rutelor
 ├── .nvmrc                    # Versiunea recomandată Node.js
 ├── .gitignore                # Ignoră /node_modules
-├── package.json              # Dependințe și comenzi
+├── package.json              # Dependențe și comenzi
 └── README.md
 ```
 
