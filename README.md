@@ -1,6 +1,6 @@
 ## Auto Service – Backend + Minimal Frontend Project
 
-This project was created for the Info World 2025 internship interview, backend position. It simulates a car service management system, allowing for client and appointment administration, as well as service history recording.
+This project was created for the **Info World 2025** internship interview, backend position. It simulates a car service management system, allowing for client and appointment administration, as well as service history recording.
 
 Acest proiect a fost realizat pentru interviul de internship **Info World 2025**, partea de backend. Am ales să implementez funcționalitățile principale pentru gestionarea unui service auto, folosind Node.js și JSON ca bază de date locală. În plus, am adăugat o interfață simplă în HTML pentru testare.
 
