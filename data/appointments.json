@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "clientId": 2,
+    "carPlate": "B555ABC",
+    "method": "telefon",
+    "action": "revizie completă",
+    "startTime": "10:30"
+  }
+]

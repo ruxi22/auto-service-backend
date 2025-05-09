@@ -1,0 +1,84 @@
+GET http://localhost:3001/clients
+
+### Adaugă un client nou
+POST http://localhost:3001/clients
+Content-Type: application/json
+
+{
+"firstName": "Ruxandra",
+"lastName": "Popa",
+"email": "ruxi@email.com",
+"phoneNumbers": ["0733445566"],
+"cars": [
+    {
+    "plate": "B555ABC",
+    "vin": "WVWZZZ1JZXW000001",
+    "make": "Volkswagen",
+    "model": "Golf",
+    "year": 2017,
+    "engineType": "diesel",
+    "engineCapacity": 1600,
+    "horsePower": 105
+    }
+]
+}
+
+### Modifică un client (ex: ID 1)
+PUT http://localhost:3001/clients/1
+Content-Type: application/json
+
+{
+"firstName": "Ana",
+"lastName": "Popescu",
+"email": "ana_nou@email.com",
+"phoneNumbers": ["0742999999"],
+"cars": []
+}
+
+### Dezactivează clientul cu ID 1
+PATCH http://localhost:3001/clients/1/disable
+
+
+### Reactivează clientul cu ID 1
+PATCH http://localhost:3001/clients/1/enable
+
+### Șterge clientul cu ID 1
+DELETE http://localhost:3001/clients/1
+
+### Toate programările
+GET http://localhost:3001/appointments
+
+### Adaugă o programare nouă
+POST http://localhost:3001/appointments
+Content-Type: application/json
+
+{
+  "clientId": 2,
+  "carPlate": "B555ABC",
+  "method": "telefon",
+  "action": "revizie completă",
+  "startTime": "10:30"
+}
+
+### Primire mașină (ID 1)
+PATCH http://localhost:3001/appointments/1/receive
+Content-Type: application/json
+
+{
+  "observations": "Zgârietură pe bara față, clientul spune că are vibrații la frânare."
+}
+
+### Procesare mașină (ID 1)
+PATCH http://localhost:3001/appointments/1/process
+Content-Type: application/json
+
+{
+  "operations": "Schimbat plăcuțe frână, verificat sistem suspensie.",
+  "duration": 40
+}
+POST http://localhost:3001/suggestions
+Content-Type: application/json
+
+{
+  "description": "Mașina vibrează puternic când frânez"
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin – Auto Service</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 700px; margin: auto; }
+    input, button { margin-top: 5px; padding: 6px; width: 100%; }
+    ul { padding-left: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Adaugă un client nou</h1>
+  <form id="clientForm">
+    <input type="text" placeholder="Prenume" id="firstName" required><br>
+    <input type="text" placeholder="Nume" id="lastName" required><br>
+    <input type="email" placeholder="Email" id="email" required><br>
+    <input type="text" placeholder="Telefon" id="phone" required><br>
+    <input type="text" placeholder="Număr înmatriculare" id="plate"><br>
+    <input type="text" placeholder="Marcă" id="make"><br>
+    <input type="text" placeholder="Model" id="model"><br>
+    <button type="submit">Adaugă client</button>
+  </form>
+  <div id="addClientMsg" style="color: green;"></div>
+
+  <h2>Clienți existenți</h2>
+  <ul id="clientList"></ul>
+
+  <script>
+    function loadClients() {
+      fetch('http://localhost:3001/clients')
+        .then(res => res.json())
+        .then(data => {
+          const list = document.getElementById('clientList');
+          list.innerHTML = '';
+          data.forEach(client => {
+            const li = document.createElement('li');
+            li.textContent = `${client.firstName} ${client.lastName} (${client.email})`;
+            list.appendChild(li);
+          });
+        });
+    }
+
+    document.getElementById('clientForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const client = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phoneNumbers: [document.getElementById('phone').value],
+        cars: []
+      };
+
+      const plate = document.getElementById('plate').value;
+      const make = document.getElementById('make').value;
+      const model = document.getElementById('model').value;
+
+      if (plate && make && model) {
+        client.cars.push({
+          plate,
+          make,
+          model,
+          year: 2020,
+          engineType: "benzina",
+          engineCapacity: 1200,
+          horsePower: 75
+        });
+      }
+
+      fetch('http://localhost:3001/clients', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(client)
+      })
+      .then(res => res.json())
+      .then(() => {
+        document.getElementById('addClientMsg').innerText = 'Client adăugat cu succes!';
+        loadClients();
+      });
+    });
+
+    loadClients();
+  </script>
+  <br><br>
+  <a href="index.html" style="
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 16px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  ">Înapoi la pagina principală</a>  
+</body>
+</html>

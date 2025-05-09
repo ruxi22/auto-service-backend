@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "firstName": "Ana",
+    "lastName": "Popescu",
+    "email": "ana@example.com",
+    "phoneNumbers": [
+      "0742123456"
+    ],
+    "active": true,
+    "cars": [
+      {
+        "plate": "B123XYZ",
+        "vin": "ABC12345678900000",
+        "make": "Dacia",
+        "model": "Logan",
+        "year": 2015,
+        "engineType": "benzina",
+        "engineCapacity": 1200,
+        "horsePower": 75
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "firstName": "Mihai",
+    "lastName": "Vasilescu",
+    "email": "mihai@email.com",
+    "phoneNumbers": [
+      "0733445566"
+    ],
+    "active": true,
+    "cars": []
+  }
+]
